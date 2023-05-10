@@ -27,12 +27,13 @@
             </tr>
             <tr>
                 <td><em>tú</em>&nbsp;&nbsp;<br><strong>you</strong>, singular informal</td>
-                <td><input class="conjucation-input" name="tu" type="text" placeholder="inser word in right form" />
+                <td><input class="conjucation-input" name="tú" type="text" placeholder="inser word in right form" />
                 </td>
             </tr>
             <tr>
                 <td><em>él, ella&nbsp;</em><br><strong>he, she</strong></td>
-                <td><input class="conjucation-input" name="elella" type="text" placeholder="inser word in right form" />
+                <td><input class="conjucation-input" name="él/ella" type="text"
+                        placeholder="inser word in right form" />
                 </td>
             </tr>
             <tr>
@@ -43,19 +44,19 @@
             <tr>
                 <td><em>nosotros / nosotras</em><br><strong>we</strong> (<em>nosotras</em> indicating a group composed
                     of females)</td>
-                <td><input class="conjucation-input" name="nosotrosnosotras" type="text"
+                <td><input class="conjucation-input" name="nosotros/nosotras" type="text"
                         placeholder="inser word in right form" /></td>
             </tr>
             <tr>
                 <td><em>vosotros / vosotras</em>&nbsp; <br><strong>you</strong>, plural, informal, used only in Spain
                     (<em>vosotras</em> indicating a group composed of females)</td>
-                <td><input class="conjucation-input" name="vosotrosvosotras" type="text"
+                <td><input class="conjucation-input" name="vosotros/vosotras" type="text"
                         placeholder="inser word in right form" /></td>
             </tr>
             <tr>
                 <td><em>ellos / ellas</em>&nbsp;&nbsp;<br><strong>they</strong> (<em>ellas</em> indicating a group
                     composed of females)</td>
-                <td><input class="conjucation-input" name="ellosellas" type="text"
+                <td><input class="conjucation-input" name="ellos/ellas" type="text"
                         placeholder="inser word in right form" /></td>
             </tr>
             <tr>
@@ -78,25 +79,97 @@
         const retryButton = document.getElementById("retry-button");
         const words = [
             {
-                word: 'tener',
-                translation: 'to have',
-                forms: {
-                    yo: 'tengo',
-                    tu: 'tienes',
-                    elella: 'tiene',
-                    usted: 'tiene',
-                    nosotrosnosotras: 'tenemos',
-                    vosotrosvosotras: 'tenemos',
-                    ellosellas: 'tienen',
-                    ustedes: 'tienen',
+                "word": "tener",
+                "translation": "to have",
+                "forms": {
+                    "yo": "tengo",
+                    "tú": "tienes",
+                    "él/ella": "tiene",
+                    "usted": "tiene",
+                    "nosotros/nosotras": "tenemos",
+                    "vosotros/vosotras": "tenéis",
+                    "ellos/ellas": "tienen",
+                    "ustedes": "tienen"
+                }
+            },
+            {
+                "word": "ser",
+                "translation": "to be",
+                "forms": {
+                    "yo": "soy",
+                    "tú": "eres",
+                    "él/ella": "es",
+                    "usted": "es",
+                    "nosotros/nosotras": "somos",
+                    "vosotros/vosotras": "sois",
+                    "ellos/ellas": "son",
+                    "ustedes": "son"
+                }
+            },
+            {
+                "word": "ir",
+                "translation": "to go",
+                "forms": {
+                    "yo": "voy",
+                    "tú": "vas",
+                    "él/ella": "va",
+                    "usted": "va",
+                    "nosotros/nosotras": "vamos",
+                    "vosotros/vosotras": "vais",
+                    "ellos/ellas": "van",
+                    "ustedes": "van"
+                }
+            },
+            {
+                "word": "hablar",
+                "translation": "to speak",
+                "forms": {
+                    "yo": "hablo",
+                    "tú": "hablas",
+                    "él/ella": "habla",
+                    "usted": "habla",
+                    "nosotros/nosotras": "hablamos",
+                    "vosotros/vosotras": "habláis",
+                    "ellos/ellas": "hablan",
+                    "ustedes": "hablan"
+                }
+            },
+            {
+                "word": "comer",
+                "translation": "to eat",
+                "forms": {
+                    "yo": "como",
+                    "tú": "comes",
+                    "él/ella": "come",
+                    "usted": "come",
+                    "nosotros/nosotras": "comemos",
+                    "vosotros/vosotras": "coméis",
+                    "ellos/ellas": "comen",
+                    "ustedes": "comen"
+                }
+            },
+            {
+                "word": "vivir",
+                "translation": "to live",
+                "forms": {
+                    "yo": "vivo",
+                    "tú": "vives",
+                    "él/ella": "vive",
+                    "usted": "vive",
+                    "nosotros/nosotras": "vivimos",
+                    "vosotros/vosotras": "vivís",
+                    "ellos/ellas": "viven",
+                    "ustedes": "viven"
                 }
             }
         ]
 
+        const wordToCheck = words[Math.floor(Math.random() * words.length)];
+
 
         const getWordToCheck = () => {
-            document.getElementById("verb-to-conjuct").innerHTML = words[0].word;
-            document.getElementById("verb-translation").innerHTML = words[0].translation;
+            document.getElementById("verb-to-conjuct").innerHTML = wordToCheck.word;
+            document.getElementById("verb-translation").innerHTML = wordToCheck.translation;
             inputs = document.querySelectorAll(".conjucation-input");
 
             console.log(inputs);
@@ -104,7 +177,7 @@
                 const correct = document.createElement("span");
                 correct.id = `span-${item.name}`
                 correct.style.color = "red";
-                correct.innerHTML = words[0].forms[item.name]
+                correct.innerHTML = wordToCheck.forms[item.name]
                 correct.style.display = "none";
 
                 item.parentNode.insertBefore(correct, item.nextSibling);
@@ -114,7 +187,7 @@
         const check = () => {
             inputs.forEach(item => {
                 const resultSpan = document.getElementById(`span-${item.name}`);
-                if (item.value === words[0].forms[item.name]) {
+                if (item.value === wordToCheck.forms[item.name]) {
                     resultSpan.style.color = "green";
                 } else {
                     resultSpan.style.color = "red";
