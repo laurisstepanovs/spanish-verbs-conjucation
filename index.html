@@ -3,8 +3,20 @@
 <head>
     <title>Spanish Verbs Conjucation</title>
     <style>
+        .info {
+            font-size: 23px;
+        }
+
         .input.error {
             border-color: red;
+        }
+
+        td {
+            border: 1px black solid;
+        }
+
+        td.personal {
+            text-align: right;
         }
     </style>
 </head>
@@ -12,61 +24,76 @@
 <body>
     <h1>Spanish Verbs Conjucation</h1>
 
+
+    <div class="info">
+        <div>
+            Translation:<em id="verb-translation"></em>
+        </div>
+        <div>
+            Verb to conjuct:<strong><em id="verb-to-conjuct"></em></strong>
+        </div>
+    </div>
     <table>
         <tbody>
             <tr>
-                <td></td>
-                <td>Translation:<em id="verb-translation"></em><br>Verb to conjuct:<strong><em
-                            id="verb-to-conjuct"></em></strong></td>
-            </tr>
-            <tr>
-                <td><em>yo</em>&nbsp; <em>&nbsp;</em><br><strong>I&nbsp;</strong></td>
+                <td class="personal">
+                    <div><em>yo</em></div>
+                    <div><strong>I</strong></div>
+                </td>
                 <td><input class="conjucation-input" name="yo" type="text" placeholder="inser word in right form" />
                 </td>
 
             </tr>
             <tr>
-                <td><em>tú</em>&nbsp;&nbsp;<br><strong>you</strong>, singular informal</td>
+                <td class="personal">
+                    <div><em>tú</em></div>
+                    <div><strong>you</strong></div>
+                </td>
                 <td><input class="conjucation-input" name="tú" type="text" placeholder="inser word in right form" />
                 </td>
             </tr>
             <tr>
-                <td><em>él, ella&nbsp;</em><br><strong>he, she</strong></td>
+                <td class="personal">
+                    <div><em>él, ella</em></div>
+                    <div><strong>he, she</strong></div>
+                </td>
                 <td><input class="conjucation-input" name="él/ella" type="text"
                         placeholder="inser word in right form" />
                 </td>
             </tr>
             <tr>
-                <td><em>usted</em>&nbsp;&nbsp;<br><strong>you,<em> </em></strong>singular formal</td>
+                <td class="personal">
+                    <div><em>usted</em></div>
+                    <div><strong>you</strong></div>
+                </td>
                 <td><input class="conjucation-input" name="usted" type="text" placeholder="inser word in right form" />
                 </td>
             </tr>
             <tr>
-                <td><em>nosotros / nosotras</em><br><strong>we</strong> (<em>nosotras</em> indicating a group composed
-                    of females)</td>
+                <td class="personal"><em>nosotros / nosotras</em><br><strong>we</strong></td>
                 <td><input class="conjucation-input" name="nosotros/nosotras" type="text"
                         placeholder="inser word in right form" /></td>
             </tr>
             <tr>
-                <td><em>vosotros / vosotras</em>&nbsp; <br><strong>you</strong>, plural, informal, used only in Spain
-                    (<em>vosotras</em> indicating a group composed of females)</td>
+                <td class="personal"><em>vosotros / vosotras</em>&nbsp; <br><strong>you</strong></td>
                 <td><input class="conjucation-input" name="vosotros/vosotras" type="text"
                         placeholder="inser word in right form" /></td>
             </tr>
             <tr>
-                <td><em>ellos / ellas</em>&nbsp;&nbsp;<br><strong>they</strong> (<em>ellas</em> indicating a group
-                    composed of females)</td>
+                <td class="personal"><em>ellos / ellas</em>&nbsp;&nbsp;<br><strong>they</strong></td>
                 <td><input class="conjucation-input" name="ellos/ellas" type="text"
                         placeholder="inser word in right form" /></td>
             </tr>
             <tr>
-                <td><em>ustedes</em>&nbsp;<br><strong>you</strong>, plural, formal in Spain, formal/informal in Latin
-                    America</td>
+                <td class="personal">
+                    <div><em>ustedes</em></div>
+                    <div><strong>you</strong></div>
+                </td>
                 <td><input class="conjucation-input" name="ustedes" type="text"
                         placeholder="inser word in right form" /></td>
             </tr>
             <tr>
-                <td></td>
+                <td class="personal"></td>
                 <td><button onclick="check()">Check</button>
                     <button onclick="retry()" id="retry-button">Retry</button>
                 </td>
@@ -162,6 +189,7 @@
                     "ustedes": "viven"
                 }
             }
+
         ]
 
         const wordToCheck = words[Math.floor(Math.random() * words.length)];
