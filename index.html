@@ -2,6 +2,7 @@
 
 <head>
     <title>Spanish Verbs Conjucation</title>
+    <link rel="icon" href="./spanish.ico">
     <style>
         .info {
             font-size: 23px;
@@ -9,6 +10,10 @@
 
         .input.error {
             border-color: red;
+        }
+
+        .lang-type {
+            border: 1px black solid;
         }
 
         td {
@@ -19,12 +24,21 @@
             text-align: right;
         }
     </style>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/solid.js" integrity="sha384-/BxOvRagtVDn9dJ+JGCtcofNXgQO/CCCVKdMfL115s3gOgQxWaX/tSq5V8dRgsbc" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/fontawesome.js" integrity="sha384-dPBGbj4Uoy1OOpM4+aRGfAOc0W37JkROT+3uynUgTHZCHZNMHfGXsmmvYTffZjYO" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <h1>Spanish Verbs Conjucation</h1>
 
-
+    <div class="lang-type">
+        Spanish:<input type="checkbox">
+        Mexican:<input type="checkbox">
+    </div>
+    <div class="display-options">
+        Tip: <input type="checkbox">
+    </div>
     <div class="info">
         <div>
             Translation:<em id="verb-translation"></em>
@@ -40,16 +54,16 @@
                     <div><em>yo</em></div>
                     <div><strong>I</strong></div>
                 </td>
-                <td><input class="conjucation-input" name="yo" type="text" placeholder="inser word in right form" />
+                <td><input class="conjucation-input" name="yo" data-spanish-personal="yo" type="text" placeholder="inser word in right form" />
                 </td>
 
             </tr>
             <tr>
                 <td class="personal">
-                    <div><em>tú</em></div>
+                    <div><em>tu</em></div>
                     <div><strong>you</strong></div>
                 </td>
-                <td><input class="conjucation-input" name="tú" type="text" placeholder="inser word in right form" />
+                <td><input class="conjucation-input" name="tu" data-spanish-personal="tu" type="text" placeholder="inser word in right form" />
                 </td>
             </tr>
             <tr>
@@ -57,45 +71,46 @@
                     <div><em>él, ella</em></div>
                     <div><strong>he, she</strong></div>
                 </td>
-                <td><input class="conjucation-input" name="él/ella" type="text"
+                <td><input class="conjucation-input" name="el/ella" data-spanish-personal="ella" type="text"
                         placeholder="inser word in right form" />
                 </td>
             </tr>
-            <tr>
+            <tr data-used="spanish">
                 <td class="personal">
                     <div><em>usted</em></div>
                     <div><strong>you</strong></div>
                 </td>
-                <td><input class="conjucation-input" name="usted" type="text" placeholder="inser word in right form" />
+                <td><input class="conjucation-input" name="usted" type="text" data-spanish-personal="usted" placeholder="inser word in right form" />
                 </td>
             </tr>
             <tr>
                 <td class="personal"><em>nosotros / nosotras</em><br><strong>we</strong></td>
-                <td><input class="conjucation-input" name="nosotros/nosotras" type="text"
+                <td><input class="conjucation-input" name="nosotros/nosotras" type="text" data-spanish-personal="nosotras"
                         placeholder="inser word in right form" /></td>
             </tr>
             <tr>
                 <td class="personal"><em>vosotros / vosotras</em>&nbsp; <br><strong>you</strong></td>
-                <td><input class="conjucation-input" name="vosotros/vosotras" type="text"
+                <td><input class="conjucation-input" name="vosotros/vosotras" type="text" data-spanish-personal="vosotras"
                         placeholder="inser word in right form" /></td>
             </tr>
             <tr>
                 <td class="personal"><em>ellos / ellas</em>&nbsp;&nbsp;<br><strong>they</strong></td>
-                <td><input class="conjucation-input" name="ellos/ellas" type="text"
+                <td><input class="conjucation-input" name="ellos/ellas" type="text" data-spanish-personal="ellas"
                         placeholder="inser word in right form" /></td>
             </tr>
-            <tr>
+            <tr data-used="spanish">
                 <td class="personal">
                     <div><em>ustedes</em></div>
                     <div><strong>you</strong></div>
                 </td>
-                <td><input class="conjucation-input" name="ustedes" type="text"
+                <td><input class="conjucation-input" name="ustedes" type="text" data-spanish-personal="ustedes"
                         placeholder="inser word in right form" /></td>
             </tr>
             <tr>
                 <td class="personal"></td>
                 <td><button onclick="check()">Check</button>
                     <button onclick="retry()" id="retry-button">Retry</button>
+                    <button onclick="next()" id="next-button">Next</button>
                 </td>
             </tr>
         </tbody>
@@ -110,8 +125,8 @@
                 "translation": "to have",
                 "forms": {
                     "yo": "tengo",
-                    "tú": "tienes",
-                    "él/ella": "tiene",
+                    "tu": "tienes",
+                    "el/ella": "tiene",
                     "usted": "tiene",
                     "nosotros/nosotras": "tenemos",
                     "vosotros/vosotras": "tenéis",
@@ -124,8 +139,8 @@
                 "translation": "to be",
                 "forms": {
                     "yo": "soy",
-                    "tú": "eres",
-                    "él/ella": "es",
+                    "tu": "eres",
+                    "el/ella": "es",
                     "usted": "es",
                     "nosotros/nosotras": "somos",
                     "vosotros/vosotras": "sois",
@@ -138,8 +153,8 @@
                 "translation": "to go",
                 "forms": {
                     "yo": "voy",
-                    "tú": "vas",
-                    "él/ella": "va",
+                    "tu": "vas",
+                    "el/ella": "va",
                     "usted": "va",
                     "nosotros/nosotras": "vamos",
                     "vosotros/vosotras": "vais",
@@ -152,8 +167,8 @@
                 "translation": "to speak",
                 "forms": {
                     "yo": "hablo",
-                    "tú": "hablas",
-                    "él/ella": "habla",
+                    "tu": "hablas",
+                    "el/ella": "habla",
                     "usted": "habla",
                     "nosotros/nosotras": "hablamos",
                     "vosotros/vosotras": "habláis",
@@ -166,8 +181,8 @@
                 "translation": "to eat",
                 "forms": {
                     "yo": "como",
-                    "tú": "comes",
-                    "él/ella": "come",
+                    "tu": "comes",
+                    "el/ella": "come",
                     "usted": "come",
                     "nosotros/nosotras": "comemos",
                     "vosotros/vosotras": "coméis",
@@ -180,8 +195,8 @@
                 "translation": "to live",
                 "forms": {
                     "yo": "vivo",
-                    "tú": "vives",
-                    "él/ella": "vive",
+                    "tu": "vives",
+                    "el/ella": "vive",
                     "usted": "vive",
                     "nosotros/nosotras": "vivimos",
                     "vosotros/vosotras": "vivís",
@@ -192,23 +207,52 @@
 
         ]
 
-        const wordToCheck = words[Math.floor(Math.random() * words.length)];
+        let index = 0;
+        let wordToCheck = words[index];
 
+        const next = () => {
+            document.querySelectorAll('.tip-span').forEach(item=>item.remove());
+            document.querySelectorAll('.audio').forEach(item=>item.remove());
+            index++;
+            wordToCheck = words[index];
+            getWordToCheck();
+        }
+
+        const textToSpeach = (text) => {
+            var msg = new SpeechSynthesisUtterance();
+            msg.lang = "es-ES";
+            msg.text = text;
+            msg.rate = 0.07;
+            msg.voiceUri = "Mónica"
+            window.speechSynthesis.speak(msg);
+        }
 
         const getWordToCheck = () => {
             document.getElementById("verb-to-conjuct").innerHTML = wordToCheck.word;
             document.getElementById("verb-translation").innerHTML = wordToCheck.translation;
             inputs = document.querySelectorAll(".conjucation-input");
 
+
+
             console.log(inputs);
             inputs.forEach(item => {
+                item.value = "";
                 const correct = document.createElement("span");
+                const audioButton = document.createElement("button");
+                const personal = item.getAttribute("data-spanish-personal")
+                audioButton.onclick = ()=> {
+                    textToSpeach(`${personal} ${wordToCheck.forms[item.name]}`);
+                }
+                audioButton.innerHTML = "<i class='fas fa-volume-up'></i>";
+                audioButton.className = "audio"
                 correct.id = `span-${item.name}`
+                correct.className = "tip-span"
                 correct.style.color = "red";
                 correct.innerHTML = wordToCheck.forms[item.name]
                 correct.style.display = "none";
 
                 item.parentNode.insertBefore(correct, item.nextSibling);
+                item.parentNode.insertBefore(audioButton, item.nextSibling);
             })
         }
 
