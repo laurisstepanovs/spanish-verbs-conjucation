@@ -23,98 +23,117 @@
         td.personal {
             text-align: right;
         }
+
+        .content {
+            max-width: 500px;
+        }
+
+        .tip {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
     </style>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/solid.js" integrity="sha384-/BxOvRagtVDn9dJ+JGCtcofNXgQO/CCCVKdMfL115s3gOgQxWaX/tSq5V8dRgsbc" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/fontawesome.js" integrity="sha384-dPBGbj4Uoy1OOpM4+aRGfAOc0W37JkROT+3uynUgTHZCHZNMHfGXsmmvYTffZjYO" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/solid.js"
+        integrity="sha384-/BxOvRagtVDn9dJ+JGCtcofNXgQO/CCCVKdMfL115s3gOgQxWaX/tSq5V8dRgsbc"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/fontawesome.js"
+        integrity="sha384-dPBGbj4Uoy1OOpM4+aRGfAOc0W37JkROT+3uynUgTHZCHZNMHfGXsmmvYTffZjYO"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1>Spanish Verbs Conjugation</h1>
+    <div class="content">
+        <h1>Spanish Verbs Conjugation</h1>
 
-    <div class="lang-type">
-        Spanish:<input type="checkbox">
-        Mexican:<input type="checkbox">
-    </div>
-    <div class="display-options">
-        Tip: <input type="checkbox">
-    </div>
-    <div class="info">
-        <div>
-            Translation:<em id="verb-translation"></em>
+        <div class="display-options">
+            Tip: <input type="checkbox" onchange="tipChange(this)">
         </div>
-        <div>
-            Verb:<strong><em id="verb-to-conjuct"></em></strong>
+        <div class="info">
+            <div>
+                Translation:<em id="verb-translation"></em>
+            </div>
+            <div>
+                Verb:<strong><em id="verb-to-conjuct"></em></strong>
+            </div>
         </div>
-    </div>
-    <table>
-        <tbody>
-            <tr>
-                <td class="personal">
-                    <div><em>yo</em></div>
-                    <div><strong>I</strong></div>
-                </td>
-                <td><input class="conjugation-input" name="yo" data-spanish-personal="yo" type="text" placeholder="inser word in right form" />
-                </td>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="personal">
+                        <div><em>yo</em></div>
+                        <div><strong>I</strong></div>
+                    </td>
+                    <td><input class="conjugation-input" name="yo" data-spanish-personal="yo" type="text"
+                            placeholder="inser word in right form" />
+                    </td>
 
-            </tr>
-            <tr>
-                <td class="personal">
-                    <div><em>tu</em></div>
-                    <div><strong>you</strong></div>
-                </td>
-                <td><input class="conjugation-input" name="tu" data-spanish-personal="tu" type="text" placeholder="inser word in right form" />
-                </td>
-            </tr>
-            <tr>
-                <td class="personal">
-                    <div><em>él, ella</em></div>
-                    <div><strong>he, she</strong></div>
-                </td>
-                <td><input class="conjugation-input" name="el/ella" data-spanish-personal="ella" type="text"
-                        placeholder="inser word in right form" />
-                </td>
-            </tr>
-            <tr data-used="spanish">
-                <td class="personal">
-                    <div><em>usted</em></div>
-                    <div><strong>you</strong></div>
-                </td>
-                <td><input class="conjugation-input" name="usted" type="text" data-spanish-personal="usted" placeholder="inser word in right form" />
-                </td>
-            </tr>
-            <tr>
-                <td class="personal"><em>nosotros / nosotras</em><br><strong>we</strong></td>
-                <td><input class="conjugation-input" name="nosotros/nosotras" type="text" data-spanish-personal="nosotras"
-                        placeholder="inser word in right form" /></td>
-            </tr>
-            <tr>
-                <td class="personal"><em>vosotros / vosotras</em>&nbsp; <br><strong>you</strong></td>
-                <td><input class="conjugation-input" name="vosotros/vosotras" type="text" data-spanish-personal="vosotras"
-                        placeholder="inser word in right form" /></td>
-            </tr>
-            <tr>
-                <td class="personal"><em>ellos / ellas</em>&nbsp;&nbsp;<br><strong>they</strong></td>
-                <td><input class="conjugation-input" name="ellos/ellas" type="text" data-spanish-personal="ellas"
-                        placeholder="inser word in right form" /></td>
-            </tr>
-            <tr data-used="spanish">
-                <td class="personal">
-                    <div><em>ustedes</em></div>
-                    <div><strong>you</strong></div>
-                </td>
-                <td><input class="conjugation-input" name="ustedes" type="text" data-spanish-personal="ustedes"
-                        placeholder="inser word in right form" /></td>
-            </tr>
-            <tr>
-                <td class="personal"></td>
-                <td><button onclick="check()">Check</button>
-                    <button onclick="retry()" id="retry-button">Retry</button>
-                    <button onclick="next()" id="next-button">Next</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+                <tr>
+                    <td class="personal">
+                        <div><em>tu</em></div>
+                        <div><strong>you</strong></div>
+                    </td>
+                    <td><input class="conjugation-input" name="tu" data-spanish-personal="tu" type="text"
+                            placeholder="inser word in right form" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="personal">
+                        <div><em>él, ella</em></div>
+                        <div><strong>he, she</strong></div>
+                    </td>
+                    <td><input class="conjugation-input" name="el/ella" data-spanish-personal="ella" type="text"
+                            placeholder="inser word in right form" />
+                    </td>
+                </tr>
+                <tr data-used="spanish">
+                    <td class="personal">
+                        <div><em>usted</em></div>
+                        <div><strong>you</strong></div>
+                    </td>
+                    <td><input class="conjugation-input" name="usted" type="text" data-spanish-personal="usted"
+                            placeholder="inser word in right form" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="personal"><em>nosotros / nosotras</em><br><strong>we</strong></td>
+                    <td><input class="conjugation-input" name="nosotros/nosotras" type="text"
+                            data-spanish-personal="nosotras" placeholder="inser word in right form" /></td>
+                </tr>
+                <tr>
+                    <td class="personal"><em>vosotros / vosotras</em>&nbsp; <br><strong>you</strong></td>
+                    <td><input class="conjugation-input" name="vosotros/vosotras" type="text"
+                            data-spanish-personal="vosotras" placeholder="inser word in right form" /></td>
+                </tr>
+                <tr>
+                    <td class="personal"><em>ellos / ellas</em>&nbsp;&nbsp;<br><strong>they</strong></td>
+                    <td><input class="conjugation-input" name="ellos/ellas" type="text" data-spanish-personal="ellas"
+                            placeholder="inser word in right form" /></td>
+                </tr>
+                <tr data-used="spanish">
+                    <td class="personal">
+                        <div><em>ustedes</em></div>
+                        <div><strong>you</strong></div>
+                    </td>
+                    <td><input class="conjugation-input" name="ustedes" type="text" data-spanish-personal="ustedes"
+                            placeholder="inser word in right form" /></td>
+                </tr>
+                <tr>
+                    <td class="personal"></td>
+                    <td><button onclick="check()">Check</button>
+                        <button onclick="retry()" id="retry-button">Retry</button>
+                        <button onclick="next()" id="next-button">Next</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="tip" class="tip" style="display:none">
+        <img src="conjugation-tip.jpeg" alt="conjugation-tip">
+    </div>
 
     <script>
         let inputs;
@@ -211,8 +230,8 @@
         let wordToCheck = words[index];
 
         const next = () => {
-            document.querySelectorAll('.tip-span').forEach(item=>item.remove());
-            document.querySelectorAll('.audio').forEach(item=>item.remove());
+            document.querySelectorAll('.tip-span').forEach(item => item.remove());
+            document.querySelectorAll('.audio').forEach(item => item.remove());
             index++;
             wordToCheck = words[index];
             getWordToCheck();
@@ -240,7 +259,7 @@
                 const correct = document.createElement("span");
                 const audioButton = document.createElement("button");
                 const personal = item.getAttribute("data-spanish-personal")
-                audioButton.onclick = ()=> {
+                audioButton.onclick = () => {
                     textToSpeach(`${personal} ${wordToCheck.forms[item.name]}`);
                 }
                 audioButton.innerHTML = "<i class='fas fa-volume-up'></i>";
@@ -275,6 +294,11 @@
                 resultSpan.style.display = "none";
                 item.value = "";
             })
+        }
+
+        const tipChange = (cb) => {
+            let tip = document.getElementById("tip");
+            document.getElementById("tip").style.display = cb.checked ? "block" : "none";
         }
 
         window.onload = function () {
