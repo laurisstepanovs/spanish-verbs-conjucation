@@ -81,19 +81,10 @@
                 </tr>
                 <tr>
                     <td class="personal">
-                        <div><em>él, ella</em></div>
-                        <div><strong>he, she</strong></div>
+                        <div><em>él, ella, usted</em></div>
+                        <div><strong>he, she, you (formal)</strong></div>
                     </td>
-                    <td><input class="conjugation-input" name="el/ella" data-spanish-personal="ella" type="text"
-                            placeholder="inser word in right form" />
-                    </td>
-                </tr>
-                <tr data-used="spanish">
-                    <td class="personal">
-                        <div><em>usted</em></div>
-                        <div><strong>you</strong></div>
-                    </td>
-                    <td><input class="conjugation-input" name="usted" type="text" data-spanish-personal="usted"
+                    <td><input class="conjugation-input" name="el/ella/usted" data-spanish-personal="ella" type="text"
                             placeholder="inser word in right form" />
                     </td>
                 </tr>
@@ -108,17 +99,9 @@
                             data-spanish-personal="vosotras" placeholder="inser word in right form" /></td>
                 </tr>
                 <tr>
-                    <td class="personal"><em>ellos / ellas</em>&nbsp;&nbsp;<br><strong>they</strong></td>
-                    <td><input class="conjugation-input" name="ellos/ellas" type="text" data-spanish-personal="ellas"
-                            placeholder="inser word in right form" /></td>
-                </tr>
-                <tr data-used="spanish">
-                    <td class="personal">
-                        <div><em>ustedes</em></div>
-                        <div><strong>you</strong></div>
-                    </td>
-                    <td><input class="conjugation-input" name="ustedes" type="text" data-spanish-personal="ustedes"
-                            placeholder="inser word in right form" /></td>
+                    <td class="personal"><em>ellos / ellas / ustedes</em>&nbsp;&nbsp;<br><strong>they</strong></td>
+                    <td><input class="conjugation-input" name="ellos/ellas/ustedes" type="text"
+                            data-spanish-personal="ellas" placeholder="inser word in right form" /></td>
                 </tr>
                 <tr>
                     <td class="personal"></td>
@@ -145,12 +128,10 @@
                 "forms": {
                     "yo": "tengo",
                     "tu": "tienes",
-                    "el/ella": "tiene",
-                    "usted": "tiene",
+                    "el/ella/usted": "tiene",
                     "nosotros/nosotras": "tenemos",
                     "vosotros/vosotras": "tenéis",
-                    "ellos/ellas": "tienen",
-                    "ustedes": "tienen"
+                    "ellos/ellas/ustedes": "tienen",
                 }
             },
             {
@@ -159,12 +140,10 @@
                 "forms": {
                     "yo": "soy",
                     "tu": "eres",
-                    "el/ella": "es",
-                    "usted": "es",
+                    "el/ella/usted": "es",
                     "nosotros/nosotras": "somos",
                     "vosotros/vosotras": "sois",
-                    "ellos/ellas": "son",
-                    "ustedes": "son"
+                    "ellos/ellas/ustedes": "son",
                 }
             },
             {
@@ -173,12 +152,10 @@
                 "forms": {
                     "yo": "voy",
                     "tu": "vas",
-                    "el/ella": "va",
-                    "usted": "va",
+                    "el/ella/usted": "va",
                     "nosotros/nosotras": "vamos",
                     "vosotros/vosotras": "vais",
-                    "ellos/ellas": "van",
-                    "ustedes": "van"
+                    "ellos/ellasustedes": "van",
                 }
             },
             {
@@ -187,12 +164,10 @@
                 "forms": {
                     "yo": "hablo",
                     "tu": "hablas",
-                    "el/ella": "habla",
-                    "usted": "habla",
+                    "el/ella/usted": "habla",
                     "nosotros/nosotras": "hablamos",
                     "vosotros/vosotras": "habláis",
-                    "ellos/ellas": "hablan",
-                    "ustedes": "hablan"
+                    "ellos/ellas/ustedes": "hablan",
                 }
             },
             {
@@ -201,12 +176,10 @@
                 "forms": {
                     "yo": "como",
                     "tu": "comes",
-                    "el/ella": "come",
-                    "usted": "come",
+                    "el/ella/usted": "come",
                     "nosotros/nosotras": "comemos",
                     "vosotros/vosotras": "coméis",
-                    "ellos/ellas": "comen",
-                    "ustedes": "comen"
+                    "ellos/ellas/ustedes": "comen",
                 }
             },
             {
@@ -215,12 +188,10 @@
                 "forms": {
                     "yo": "vivo",
                     "tu": "vives",
-                    "el/ella": "vive",
-                    "usted": "vive",
+                    "el/ella/usted": "vive",
                     "nosotros/nosotras": "vivimos",
                     "vosotros/vosotras": "vivís",
-                    "ellos/ellas": "viven",
-                    "ustedes": "viven"
+                    "ellos/ellas/ustedes": "viven",
                 }
             }
 
@@ -251,9 +222,6 @@
             document.getElementById("verb-translation").innerHTML = wordToCheck.translation;
             inputs = document.querySelectorAll(".conjugation-input");
 
-
-
-            console.log(inputs);
             inputs.forEach(item => {
                 item.value = "";
                 const correct = document.createElement("span");
