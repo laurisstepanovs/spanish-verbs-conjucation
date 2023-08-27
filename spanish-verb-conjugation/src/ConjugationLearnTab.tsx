@@ -33,35 +33,35 @@ const ConjugationLearnTab = () => {
                                 <div><em>tu</em></div>
                                 <div><strong>you</strong></div>
                             </td>
-                            <td>{getConjugation(verb, tense, 0)}</td>
+                            <td>{getConjugation(verb, tense, 1)}</td>
                         </tr>
                         <tr>
                             <td className="personal">
                                 <div><em>él, ella, usted</em></div>
                                 <div><strong>he, she, you (formal)</strong></div>
                             </td>
-                            <td>{getConjugation(verb, tense, 0)}</td>
+                            <td>{getConjugation(verb, tense, 2)}</td>
                         </tr>
                         <tr>
                             <td className="personal">
                               <div><em>nosotros / nosotras</em></div>
                               <div><strong>we</strong></div>
                               </td>
-                            <td>{getConjugation(verb, tense, 0)}</td>
+                            <td>{getConjugation(verb, tense, 3)}</td>
                         </tr>
                         <tr>
                             <td className="personal">
                               <div><em>vosotros / vosotras</em></div>
                               <div><strong>you</strong></div>
                               </td>
-                            <td>{getConjugation(verb, tense, 0)}</td>
+                            <td>{getConjugation(verb, tense, 4)}</td>
                         </tr>
                         <tr>
                             <td className="personal">
                               <div><em>ellos / ellas / ustedes</em></div>
                               <div><strong>they</strong></div>
                             </td>
-                            <td>{getConjugation(verb, tense, 0)}</td>
+                            <td>{getConjugation(verb, tense, 5)}</td>
                         </tr>
                     </tbody>
                 </table>
