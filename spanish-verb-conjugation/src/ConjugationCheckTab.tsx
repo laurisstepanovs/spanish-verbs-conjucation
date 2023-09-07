@@ -115,15 +115,6 @@ const ConjugationCheckTab = () => {
     window.speechSynthesis.speak(msg);
 }
 
-  useEffect(()=>{
-    console.log(getConjugation(verbState, currentTenseState, 0));
-    console.log(getConjugation(verbState, currentTenseState, 1));
-    console.log(getConjugation(verbState, currentTenseState, 2));
-    console.log(getConjugation(verbState, currentTenseState, 3));
-    console.log(getConjugation(verbState, currentTenseState, 4));
-    console.log(getConjugation(verbState, currentTenseState, 5));
-  })
-
   return (
     <div className="App">
       <h1>VERB - {verbState}</h1>
