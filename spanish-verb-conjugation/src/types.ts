@@ -47,6 +47,14 @@ const verbs = [
     "hacer",
     "poder",
     "decir",
+    "caminar",
+    "hablar",
+    "tomar",
+    "vender",
+    "correr",
+    "comer",
+    "beber",
+    "aprender"
   ];
 
 export { tenses, type TTenses, verbs }
