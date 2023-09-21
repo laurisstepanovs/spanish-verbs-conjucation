@@ -1,8 +1,12 @@
 import { getConjugation } from 'spanish-verbs';
-import { tenses, verbs } from "./types";
+import { tenses } from "./types";
 import { useState } from 'react';
 
-const ConjugationLearnTab = () => {
+type Props = {
+    verbs: string[];
+}
+
+const ConjugationLearnTab = ({ verbs }: Props) => {
     const [ enabledTenses, setEnabledTenses ] = useState<string[]>(["INDICATIVE_PRESENT", "INDICATIVE_PRETERITE", "INDICATIVE_FUTURE"]);
 
     return <>
@@ -12,11 +16,12 @@ const ConjugationLearnTab = () => {
         { tenses.map((tense, index) => {
             return <div key={`${tense}-${index}`}>
                 <input type="checkbox" checked={enabledTenses.includes(tense)} id={tense} name={tense} onChange={(e)=> { setEnabledTenses(prevState => prevState.includes(tense) ? prevState.filter(e => e !== tense) : [...prevState, tense]) }} />
-                <label>{tense}</label>
+                <label htmlFor={tense}>{tense}</label>
             </div>
         }) }
         </div>
 
+        <div className='scrollable-table'>
         <table>
             <thead>
             <tr>
@@ -94,7 +99,8 @@ const ConjugationLearnTab = () => {
             </tr>
             })}    
             </tbody>
-        </table>
+        </table>    
+        </div>
     </>
 }
 

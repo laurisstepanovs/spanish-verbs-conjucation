@@ -1,7 +1,11 @@
 
-import { useEffect, useReducer, useState } from 'react';
+import { useReducer, useState } from 'react';
 import { getConjugation, Person0To5 } from 'spanish-verbs';
 import { verbs, TTenses, tenses } from './types';
+
+type Props = {
+  verbs: string[];
+}
 
 interface IVerbItem {
   id: Person0To5;
@@ -86,7 +90,7 @@ const reducer = (state:TVerbCheck, action: {
   }
 };
 
-const ConjugationCheckTab = () => {
+const ConjugationCheckTab = ({ verbs }: Props) => {
   const getRandomVerb = () => {
     return verbs[Math.floor(Math.random() * verbs.length)];
   }
