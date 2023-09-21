@@ -38,15 +38,15 @@ type TTenses = "INDICATIVE_PRESENT" |
 
 const verbs = [
     "ser",
-    "haber",
     "estar",
+    // "haber",
     "tener",
     "ir",
-    "saber",
+    // "saber",
     "dar",
-    "hacer",
-    "poder",
-    "decir",
+    // "hacer",
+    // "poder",
+    // "decir",
     "caminar",
     "hablar",
     "tomar",
@@ -54,7 +54,8 @@ const verbs = [
     "correr",
     "comer",
     "beber",
-    "aprender"
+    "aprender",
+    "vivir"
   ];
 
 export { tenses, type TTenses, verbs }
