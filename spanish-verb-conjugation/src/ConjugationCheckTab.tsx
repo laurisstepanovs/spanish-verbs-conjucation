@@ -1,7 +1,7 @@
 
 import { useReducer, useState } from 'react';
 import { getConjugation, Person0To5 } from 'spanish-verbs';
-import { verbs, TTenses, tenses } from './types';
+import { TTenses, tenses } from './types';
 
 type Props = {
   verbs: string[];

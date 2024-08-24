@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ConjugationCheckTab from "./ConjugationCheckTab";
 import ConjugationLearnTab from "./ConjugationLearnTab";
+import ConjugationLearnAnki from "./ConjugationLearnAnki";
 import { verbs } from "./types";
 
 const App = () => {
@@ -9,28 +10,18 @@ const App = () => {
   const [ newVerb, setNewVerb ] = useState("");
 
   const deleteItem = (index: number) => {
-    setLearn((prevState)=>{
+    setLearn((prevState) => {
       const learnVerbs = [...prevState];
-
-      console.log(learnVerbs);
-
       learnVerbs.splice(index, 1);
       return learnVerbs;
     });
   }
 
   const addNewItem = () => {
-    console.log(newVerb);
-
     setLearn((prevState) => {
       const learnVerbs = [...prevState];
-
-      console.log(learnVerbs);
-
       learnVerbs.push(newVerb);
-
       setNewVerb("");
-
       return learnVerbs;
     });
 
@@ -38,6 +29,7 @@ const App = () => {
 
   return (
     <>
+     <ConjugationLearnAnki verbs={learn}></ConjugationLearnAnki>
      <div className="verbs-list">
       {learn.map((item, index) => {
           return  <div key={item}>{item} = {index} <button onClick={()=>deleteItem(index)}>delete</button></div>;
@@ -50,8 +42,8 @@ const App = () => {
       </div>
   
       <div className="App">
-        <button onClick={()=>setCurrentTabState("learn")}>Learn</button>  
-        <button onClick={()=>setCurrentTabState("check")}>Check</button>
+        <button onClick={() => setCurrentTabState("learn")}>Learn</button> 
+        <button onClick={() => setCurrentTabState("check")}>Check</button>
         {currentTabState === "check" && <ConjugationCheckTab verbs={learn}></ConjugationCheckTab>}
         {currentTabState === "learn" && <ConjugationLearnTab verbs={learn}></ConjugationLearnTab>}
       </div>
